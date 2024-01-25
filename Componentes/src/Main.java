@@ -6,7 +6,7 @@ public class Main {
         JFrame frame = new JFrame("Inicio Sesion");
         frame.setContentPane(new form1().inicioSesion);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(720,240);
+        frame.setSize(400,300);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
 
