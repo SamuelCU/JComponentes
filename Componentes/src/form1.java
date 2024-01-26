@@ -15,7 +15,7 @@ public class form1 {
     private JMenu opciones;
     private JMenuItem opcion2;
 
-    public form1() {
+    public form1(JFrame as) {
         opcion1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,20 +32,8 @@ public class form1 {
                     frame2.pack();
                     frame2.setSize(640,480);
                     frame2.setVisible(true);
-                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(opcion1);
-                    frame.dispose();
+                    as.dispose();
                 }
-            }
-        });
-        opcion2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame3 = new JFrame("REGISTRO");
-                frame3.setContentPane(new form3().registro);
-                frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame3.pack();
-                frame3.setSize(640,480);
-                frame3.setVisible(true);
             }
         });
     }
