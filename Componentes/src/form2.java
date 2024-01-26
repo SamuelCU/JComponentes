@@ -18,38 +18,41 @@ public class form2 {
         importarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /*JFileChooser es una clase la que nos permite selecionar archivos*/
                 JFileChooser chooser = new JFileChooser();
-                chooser.showOpenDialog(null);
-                /**/
+                chooser.showOpenDialog(null); /*Abre una ventana emergente con la clase de JFileChooser*/
 
-                File file = chooser.getSelectedFile();
-
-                cargando.setValue(0);
-                cargando.setStringPainted(true);
+                /*Aqui se crea la variable para abrir el arhivo y se pueda ver como la barra carga*/
+                File file = chooser.getSelectedFile(); /*Este método devuelve el archivo selecionado*/
+                /*ProgressBar*/
+                cargando.setValue(0); /*Comienza desde 0*/
+                cargando.setStringPainted(true); /*Método para que se pinte el porcentaje que va de proceso*/
 
                 new Thread(new Runnable() {
-                    public void run() {
+                    public void run() { /*metodo "run" aqui se define el bucle para definir el proceso de la tarea*/
                         for (int i = 0; i <= 100; i++) {
-                            final int currentValue = i;
+                            final int currentValue = i; /*actualiza el valor de barra*/
                             try {
                                 SwingUtilities.invokeLater(new Runnable() {
                                     public void run() {
-                                        cargando.setValue(currentValue);
+                                        cargando.setValue(currentValue); /*la barra cambiara al valor de currentValue*/
                                     }
                                 });
-                                java.lang.Thread.sleep(100);
+                                java.lang.Thread.sleep(100); /*Solo da un tiempo de demora para simular la carga de datos*/
                             } catch (InterruptedException e) {
                                 JOptionPane.showMessageDialog(null, e);
                             }
                         }
                     }
                 }).start();
+                /*Hace que el archivo selecionado por JFileChooser se vea en JTable*/
+                /*Solo sirve para archivos .csv ya que en este tipo de archivos la separación es por comas*/
                 try {
                     BufferedReader cc = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
                     String line;
                     int numColumnas = 0;
                     while ((line = cc.readLine()) != null) {
-                        String[] data = line.split(",");
+                        String[] data = line.split(","); /*Esta definida las separaciones*/
                         numColumnas = data.length;
                     }
                     String[] columnNames = new String[numColumnas];
@@ -67,9 +70,6 @@ public class form2 {
                 } catch (Exception ex) {
                     System.out.println(ex);
                 }
-
-
-                /**/
 
             }
 

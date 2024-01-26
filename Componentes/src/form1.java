@@ -13,10 +13,10 @@ public class form1 {
     private JLabel passwordLabel;
     private JMenuBar menu;
     private JMenu opciones;
-    private JMenuItem opcion2;
 
-    public form1(JFrame as) {
-        opcion1.addActionListener(new ActionListener() {
+
+    public form1(JFrame as) { /*El "JFrame as" dentro del constructor nos servira pora que la pantalla de inicio de sesión se cierre*/
+        opcion1.addActionListener(new ActionListener() { /*Esto funciona como el boton ingresar, solo que en vez de buttom es un JMenuItem*/
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -32,7 +32,7 @@ public class form1 {
                     frame2.pack();
                     frame2.setSize(640,480);
                     frame2.setVisible(true);
-                    as.dispose();
+                    as.dispose(); /*Cierra la pantalla anterior*/
                 }
             }
         });
